@@ -1,0 +1,26 @@
+<h1>Loan application #<%= @loan_application.id %></h1>
+
+<ul>
+  <li>
+    <strong>Amount:</strong>
+    <%= @loan_application.amount %>
+  </li>
+  <li>
+    <strong>Name:</strong>
+    <%= @loan_application.user.name %>
+  </li>
+  <li>
+    <strong>Phone number:</strong>
+    <%= @loan_application.user.phone_number %>
+  </li>
+  <li>
+    <strong>Email:</strong>
+    <%= @loan_application.user.email %>
+  </li>
+  <li>
+    <strong>Interest rate:</strong>
+    <%= if @interest_rate == 0, do: "REJ", else: "#{@interest_rate}%" %>
+  </li>
+</ul>
+
+<span><%= link "Back", to: Routes.loan_application_path(@conn, :index) %></span>

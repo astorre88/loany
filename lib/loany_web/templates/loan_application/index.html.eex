@@ -1,0 +1,22 @@
+<h1>Listing Loan applications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for loan_application <- @loan_applications do %>
+    <tr>
+      <td><%= loan_application.amount %></td>
+      <td><%= loan_application.user.email %></td>
+      <td>
+        <span><%= link "Show", to: Routes.loan_application_path(@conn, :show, loan_application) %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

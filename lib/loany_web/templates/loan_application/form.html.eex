@@ -1,0 +1,31 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, "Loan amount (in #{@default_currency})" %>
+  <%= number_input f, :amount, step: "any" %>
+  <%= error_tag f, :amount %>
+
+  <div class="form-group">
+    <%= inputs_for f, :user, fn cf -> %>
+      <%= label cf, "Full name" %>
+      <%= text_input cf, :name %>
+      <%= error_tag cf, :name %>
+
+      <%= label cf, :phone_number %>
+      <%= telephone_input cf, :phone_number %>
+      <%= error_tag cf, :phone_number %>
+
+      <%= label cf, :email %>
+      <%= email_input cf, :email %>
+      <%= error_tag cf, :email %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
